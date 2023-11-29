@@ -14,7 +14,7 @@ import base64
 import urllib
 import time
 import json
-import md5
+import hashlib
 import sys
 from bs4 import BeautifulSoup
 
@@ -197,7 +197,7 @@ class overairdroid:
     def get_bb( self ):
         n = datetime.datetime.now()
         unix_time = str( int( time.mktime(n.timetuple()) ) )
-        m = md5.new()
+        m = hashlib.md5()
         m.update( unix_time + self.device_id + self.logic_key )
         key = unix_time + m.digest().encode("hex")
 
